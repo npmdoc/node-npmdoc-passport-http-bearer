@@ -1,0 +1,244 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/jaredhanson/passport-http-bearer#readme">passport-http-bearer (v1.0.1)</a>
+</h1>
+<h4>HTTP Bearer authentication strategy for Passport.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-http-bearer">module passport-http-bearer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.Strategy">
+            function <span class="apidocSignatureSpan">passport-http-bearer.</span>Strategy
+            <span class="apidocSignatureSpan">(options, verify)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.super_">
+            function <span class="apidocSignatureSpan">passport-http-bearer.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">passport-http-bearer.</span>super_.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-http-bearer.super_">module passport-http-bearer.super_</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.super_.super_">
+            function <span class="apidocSignatureSpan">passport-http-bearer.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.super_.Strategy">
+            function <span class="apidocSignatureSpan">passport-http-bearer.super_.</span>Strategy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-http-bearer.super_.prototype">module passport-http-bearer.super_.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.super_.prototype.authenticate">
+            function <span class="apidocSignatureSpan">passport-http-bearer.super_.prototype.</span>authenticate
+            <span class="apidocSignatureSpan">(req, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-http-bearer" id="apidoc.module.passport-http-bearer">module passport-http-bearer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-http-bearer.Strategy" id="apidoc.element.passport-http-bearer.Strategy">
+        function <span class="apidocSignatureSpan">passport-http-bearer.</span>Strategy
+        <span class="apidocSignatureSpan">(options, verify)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy(options, verify) {
+  if (typeof options == 'function') {
+    verify = options;
+    options = {};
+  }
+  if (!verify) { throw new TypeError('HTTPBearerStrategy requires a verify callback'); }
+
+  passport.Strategy.call(this);
+  this.name = 'bearer';
+  this._verify = verify;
+  this._realm = options.realm || 'Users';
+  if (options.scope) {
+    this._scope = (Array.isArray(options.scope)) ? options.scope : [ options.scope ];
+  }
+  this._passReqToCallback = options.passReqToCallback;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-http-bearer.super_" id="apidoc.element.passport-http-bearer.super_">
+        function <span class="apidocSignatureSpan">passport-http-bearer.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy() {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-http-bearer.super_" id="apidoc.module.passport-http-bearer.super_">module passport-http-bearer.super_</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-http-bearer.super_.super_" id="apidoc.element.passport-http-bearer.super_.super_">
+        function <span class="apidocSignatureSpan">passport-http-bearer.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy() {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-http-bearer.super_.Strategy" id="apidoc.element.passport-http-bearer.super_.Strategy">
+        function <span class="apidocSignatureSpan">passport-http-bearer.super_.</span>Strategy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Strategy() {
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-http-bearer.super_.prototype" id="apidoc.module.passport-http-bearer.super_.prototype">module passport-http-bearer.super_.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-http-bearer.super_.prototype.authenticate" id="apidoc.element.passport-http-bearer.super_.prototype.authenticate">
+        function <span class="apidocSignatureSpan">passport-http-bearer.super_.prototype.</span>authenticate
+        <span class="apidocSignatureSpan">(req, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">authenticate = function (req, options) {
+  throw new Error('Strategy#authenticate must be overridden by subclass');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      return done(null, user, { scope: 'all' });
+    });
+  }
+));
+
+#### Authenticate Requests
+
+Use `passport.<span class="apidocCodeKeywordSpan">authenticate</span>()`, specifying the `'bearer'` strategy, to
+authenticate requests.  Requests containing bearer tokens do not require session
+support, so the `session` option can be set to `false`.
+
+For example, as route middleware in an [Express](http://expressjs.com/)
+application:
+
+app.get('/profile',
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
