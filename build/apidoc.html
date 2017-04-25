@@ -90,25 +90,57 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.super_.prototype.authenticate">
-            function <span class="apidocSignatureSpan">passport-http-bearer.</span>super_.prototype.authenticate
-            <span class="apidocSignatureSpan">(req, options)</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.toString">
-            function <span class="apidocSignatureSpan">passport-http-bearer.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">passport-http-bearer.</span>Strategy.prototype</span>
 
         </li>
 
         <li>
 
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">passport-http-bearer.</span>super_.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-http-bearer.Strategy">module passport-http-bearer.Strategy</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.Strategy.Strategy">
+            function <span class="apidocSignatureSpan">passport-http-bearer.</span>Strategy
+            <span class="apidocSignatureSpan">(options, verify)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.Strategy.super_">
+            function <span class="apidocSignatureSpan">passport-http-bearer.Strategy.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.passport-http-bearer.Strategy.prototype">module passport-http-bearer.Strategy.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.Strategy.prototype._challenge">
+            function <span class="apidocSignatureSpan">passport-http-bearer.Strategy.prototype.</span>_challenge
+            <span class="apidocSignatureSpan">(code, desc, uri)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.Strategy.prototype.authenticate">
+            function <span class="apidocSignatureSpan">passport-http-bearer.Strategy.prototype.</span>authenticate
+            <span class="apidocSignatureSpan">(req)</span>
+            </a>
 
         </li>
 
@@ -143,32 +175,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.super_.prototype.authenticate">
             function <span class="apidocSignatureSpan">passport-http-bearer.super_.prototype.</span>authenticate
             <span class="apidocSignatureSpan">(req, options)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.passport-http-bearer.super_.prototype.authenticate">module passport-http-bearer.super_.prototype.authenticate</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.super_.prototype.authenticate.authenticate">
-            function <span class="apidocSignatureSpan">passport-http-bearer.super_.prototype.</span>authenticate
-            <span class="apidocSignatureSpan">(req, options)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.passport-http-bearer.toString">module passport-http-bearer.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.passport-http-bearer.toString.toString">
-            function <span class="apidocSignatureSpan">passport-http-bearer.</span>toString
-            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -251,15 +257,37 @@
 
 
 
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-http-bearer.Strategy" id="apidoc.module.passport-http-bearer.Strategy">module passport-http-bearer.Strategy</a></h1>
+
+
     <h2>
-        <a href="#apidoc.element.passport-http-bearer.super_.prototype.authenticate" id="apidoc.element.passport-http-bearer.super_.prototype.authenticate">
-        function <span class="apidocSignatureSpan">passport-http-bearer.</span>super_.prototype.authenticate
-        <span class="apidocSignatureSpan">(req, options)</span>
+        <a href="#apidoc.element.passport-http-bearer.Strategy.Strategy" id="apidoc.element.passport-http-bearer.Strategy.Strategy">
+        function <span class="apidocSignatureSpan">passport-http-bearer.</span>Strategy
+        <span class="apidocSignatureSpan">(options, verify)</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">super_.prototype.authenticate = function (req, options) {
-  throw new Error(&#x27;Strategy#authenticate must be overridden by subclass&#x27;);
+    <li>description and source-code<pre class="apidocCodePre">function Strategy(options, verify) {
+  if (typeof options == &#x27;function&#x27;) {
+    verify = options;
+    options = {};
+  }
+  if (!verify) { throw new TypeError(&#x27;HTTPBearerStrategy requires a verify callback&#x27;); }
+
+  passport.Strategy.call(this);
+  this.name = &#x27;bearer&#x27;;
+  this._verify = verify;
+  this._realm = options.realm || &#x27;Users&#x27;;
+  if (options.scope) {
+    this._scope = (Array.isArray(options.scope)) ? options.scope : [ options.scope ];
+  }
+  this._passReqToCallback = options.passReqToCallback;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -267,19 +295,144 @@
 
 
     <h2>
-        <a href="#apidoc.element.passport-http-bearer.toString" id="apidoc.element.passport-http-bearer.toString">
-        function <span class="apidocSignatureSpan">passport-http-bearer.</span>toString
+        <a href="#apidoc.element.passport-http-bearer.Strategy.super_" id="apidoc.element.passport-http-bearer.Strategy.super_">
+        function <span class="apidocSignatureSpan">passport-http-bearer.Strategy.</span>super_
         <span class="apidocSignatureSpan">()</span>
         </a>
     </h2>
     <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
+    <li>description and source-code<pre class="apidocCodePre">function Strategy() {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.passport-http-bearer.Strategy.prototype" id="apidoc.module.passport-http-bearer.Strategy.prototype">module passport-http-bearer.Strategy.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.passport-http-bearer.Strategy.prototype._challenge" id="apidoc.element.passport-http-bearer.Strategy.prototype._challenge">
+        function <span class="apidocSignatureSpan">passport-http-bearer.Strategy.prototype.</span>_challenge
+        <span class="apidocSignatureSpan">(code, desc, uri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_challenge = function (code, desc, uri) {
+  var challenge = &#x27;Bearer realm=&#x22;&#x27; + this._realm + &#x27;&#x22;&#x27;;
+  if (this._scope) {
+    challenge += &#x27;, scope=&#x22;&#x27; + this._scope.join(&#x27; &#x27;) + &#x27;&#x22;&#x27;;
+  }
+  if (code) {
+    challenge += &#x27;, error=&#x22;&#x27; + code + &#x27;&#x22;&#x27;;
+  }
+  if (desc &#x26;&#x26; desc.length) {
+    challenge += &#x27;, error_description=&#x22;&#x27; + desc + &#x27;&#x22;&#x27;;
+  }
+  if (uri &#x26;&#x26; uri.length) {
+    challenge += &#x27;, error_uri=&#x22;&#x27; + uri + &#x27;&#x22;&#x27;;
+  }
+
+  return challenge;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+if (req.query &#x26;&#x26; req.query.access_token) {
+  if (token) { return this.fail(400); }
+  token = req.query.access_token;
+}
+
+if (!token) { return this.fail(this.<span class="apidocCodeKeywordSpan">_challenge</span>()); }
+
+var self = this;
+
+function verified(err, user, info) {
+  if (err) { return self.error(err); }
+  if (!user) {
+    if (typeof info == &#x27;string&#x27;) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.passport-http-bearer.Strategy.prototype.authenticate" id="apidoc.element.passport-http-bearer.Strategy.prototype.authenticate">
+        function <span class="apidocSignatureSpan">passport-http-bearer.Strategy.prototype.</span>authenticate
+        <span class="apidocSignatureSpan">(req)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">authenticate = function (req) {
+  var token;
+
+  if (req.headers &#x26;&#x26; req.headers.authorization) {
+    var parts = req.headers.authorization.split(&#x27; &#x27;);
+    if (parts.length == 2) {
+      var scheme = parts[0]
+        , credentials = parts[1];
+
+      if (/^Bearer$/i.test(scheme)) {
+        token = credentials;
+      }
+    } else {
+      return this.fail(400);
+    }
+  }
+
+  if (req.body &#x26;&#x26; req.body.access_token) {
+    if (token) { return this.fail(400); }
+    token = req.body.access_token;
+  }
+
+  if (req.query &#x26;&#x26; req.query.access_token) {
+    if (token) { return this.fail(400); }
+    token = req.query.access_token;
+  }
+
+  if (!token) { return this.fail(this._challenge()); }
+
+  var self = this;
+
+  function verified(err, user, info) {
+    if (err) { return self.error(err); }
+    if (!user) {
+      if (typeof info == &#x27;string&#x27;) {
+        info = { message: info }
+      }
+      info = info || {};
+      return self.fail(self._challenge(&#x27;invalid_token&#x27;, info.message));
+    }
+    self.success(user, info);
+  }
+
+  if (self._passReqToCallback) {
+    this._verify(req, token, verified);
+  } else {
+    this._verify(token, verified);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  {
+    &#x22;name&#x22;: &#x22;jaredhanson&#x22;,
+    &#x22;email&#x22;: &#x22;jaredhanson@gmail.com&#x22;
+  }
+],
+&#x22;name&#x22;: &#x22;passport-http-bearer&#x22;,
+&#x22;optionalDependencies&#x22;: {},
+&#x22;readme&#x22;: &#x22;# passport-http-bearer\n\n[![Build](https://travis-ci.org/jaredhanson/passport-http-bearer.png)](http://
+travis-ci.org/jaredhanson/passport-http-bearer)\n[![Coverage](https://coveralls.io/repos/jaredhanson/passport-http-bearer/badge.png)](https://coveralls.io/r/jaredhanson/passport-http-bearer)\n[![Dependencies](https://david-dm.org/jaredhanson/passport-http-bearer.png)](http://david-dm.org/jaredhanson/passport-http-bearer)\n\n\nHTTP Bearer authentication strategy for [Passport](http://passportjs.org/).\n\nThis module lets you authenticate HTTP requests using bearer tokens, as\nspecified by [RFC 6750](http://tools.ietf.org/html/rfc6750), in your Node.js\napplications.  Bearer tokens are typically used protect API endpoints, and are\noften issued using OAuth 2.0.\n\nBy plugging into Passport, bearer token support can be easily and unobtrusively\nintegrated into any application or framework that supports\n[Connect](http://www.senchalabs.org/connect/)-style middleware, including\n[Express](http://expressjs.com/).\n\n## Install\n\n    $ npm install passport-http-bearer\n\n## Usage\n\n#### Configure Strategy\n\nThe HTTP Bearer authentication strategy authenticates users using a bearer\ntoken.  The strategy requires a `verify` callback, which accepts that\ncredential and calls `done` providing a user.  Optional `info` can be passed,\ntypically including associated scope, which will be set by Passport at\n`req.authInfo` to be used by later middleware for authorization and access\ncontrol.\n\n    passport.use(new BearerStrategy(\n      function(token, done) {\n        User.findOne({ token: token }, function (err, user) {\n          if (err) { return done(err); }\n          if (!user) { return done(null, false); }\n          return done(null, user, { scope: &#x27;all&#x27; });\n        });\n      }\n    ));\n\n#### Authenticate Requests\n\nUse `passport.<span class="apidocCodeKeywordSpan">authenticate</span>()`, specifying the `&#x27;bearer&#x27;` strategy, to\nauthenticate requests.  Requests containing bearer tokens do not require session\nsupport, so the `session` option can be set to `false`.\n\nFor example, as route middleware in an [Express](http://expressjs.com/)\napplication:\n\n    app.get(&#x27;/profile&#x27;, \n      passport.authenticate(&#x27;bearer&#x27;, { session: false }),\n      function(req, res) {\n        res.json(req.user);\n      });\n\n#### Issuing Tokens\n\nBearer tokens are typically issued using OAuth 2.0.  [OAuth2orize](https://github.com/jaredhanson/oauth2orize)\nis a toolkit for implementing OAuth 2.0 servers and issuing bearer tokens.  Once\nissued, this module can be used to authenticate tokens as described above.\n\n## Examples\n\nFor a complete, working example, refer to the [Bearer example](https://github.com/jaredhanson/passport-http-bearer/tree/master/examples/bearer).\n\n## Related Modules\n\n- [OAuth2orize](https://github.com/jaredhanson/oauth2orize) — OAuth 2.0 authorization server toolkit\n\n## Tests\n\n    $ npm install\n    $ npm test\n\n## Credits\n\n  - [Jared Hanson](http://github.com/jaredhanson)\n\n## License\n\n[The MIT License](http://opensource.org/licenses/MIT)\n\nCopyright (c) 2011-2013 Jared Hanson &#x3c;[http://jaredhanson.net/](http://jaredhanson.net/)&#x3e;\n&#x22;,
+&#x22;readmeFilename&#x22;: &#x22;README.md&#x22;,
+&#x22;repository&#x22;: {
+  &#x22;type&#x22;: &#x22;git&#x22;,
+  &#x22;url&#x22;: &#x22;git://github.com/jaredhanson/passport-http-bearer.git&#x22;
+},
+&#x22;scripts&#x22;: {
+  &#x22;test&#x22;: &#x22;node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js&#x22;
+...</pre></li>
+    </ul>
 
 
 </div>
@@ -332,76 +485,23 @@
   throw new Error(&#x27;Strategy#authenticate must be overridden by subclass&#x27;);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-      return done(null, user, { scope: &#x27;all&#x27; });
-    });
+  {
+    &#x22;name&#x22;: &#x22;jaredhanson&#x22;,
+    &#x22;email&#x22;: &#x22;jaredhanson@gmail.com&#x22;
   }
-));
-
-#### Authenticate Requests
-
-Use `passport.<span class="apidocCodeKeywordSpan">authenticate</span>()`, specifying the `&#x27;bearer&#x27;` strategy, to
-authenticate requests.  Requests containing bearer tokens do not require session
-support, so the `session` option can be set to `false`.
-
-For example, as route middleware in an [Express](http://expressjs.com/)
-application:
-
-app.get(&#x27;/profile&#x27;,
+],
+&#x22;name&#x22;: &#x22;passport-http-bearer&#x22;,
+&#x22;optionalDependencies&#x22;: {},
+&#x22;readme&#x22;: &#x22;# passport-http-bearer\n\n[![Build](https://travis-ci.org/jaredhanson/passport-http-bearer.png)](http://
+travis-ci.org/jaredhanson/passport-http-bearer)\n[![Coverage](https://coveralls.io/repos/jaredhanson/passport-http-bearer/badge.png)](https://coveralls.io/r/jaredhanson/passport-http-bearer)\n[![Dependencies](https://david-dm.org/jaredhanson/passport-http-bearer.png)](http://david-dm.org/jaredhanson/passport-http-bearer)\n\n\nHTTP Bearer authentication strategy for [Passport](http://passportjs.org/).\n\nThis module lets you authenticate HTTP requests using bearer tokens, as\nspecified by [RFC 6750](http://tools.ietf.org/html/rfc6750), in your Node.js\napplications.  Bearer tokens are typically used protect API endpoints, and are\noften issued using OAuth 2.0.\n\nBy plugging into Passport, bearer token support can be easily and unobtrusively\nintegrated into any application or framework that supports\n[Connect](http://www.senchalabs.org/connect/)-style middleware, including\n[Express](http://expressjs.com/).\n\n## Install\n\n    $ npm install passport-http-bearer\n\n## Usage\n\n#### Configure Strategy\n\nThe HTTP Bearer authentication strategy authenticates users using a bearer\ntoken.  The strategy requires a `verify` callback, which accepts that\ncredential and calls `done` providing a user.  Optional `info` can be passed,\ntypically including associated scope, which will be set by Passport at\n`req.authInfo` to be used by later middleware for authorization and access\ncontrol.\n\n    passport.use(new BearerStrategy(\n      function(token, done) {\n        User.findOne({ token: token }, function (err, user) {\n          if (err) { return done(err); }\n          if (!user) { return done(null, false); }\n          return done(null, user, { scope: &#x27;all&#x27; });\n        });\n      }\n    ));\n\n#### Authenticate Requests\n\nUse `passport.<span class="apidocCodeKeywordSpan">authenticate</span>()`, specifying the `&#x27;bearer&#x27;` strategy, to\nauthenticate requests.  Requests containing bearer tokens do not require session\nsupport, so the `session` option can be set to `false`.\n\nFor example, as route middleware in an [Express](http://expressjs.com/)\napplication:\n\n    app.get(&#x27;/profile&#x27;, \n      passport.authenticate(&#x27;bearer&#x27;, { session: false }),\n      function(req, res) {\n        res.json(req.user);\n      });\n\n#### Issuing Tokens\n\nBearer tokens are typically issued using OAuth 2.0.  [OAuth2orize](https://github.com/jaredhanson/oauth2orize)\nis a toolkit for implementing OAuth 2.0 servers and issuing bearer tokens.  Once\nissued, this module can be used to authenticate tokens as described above.\n\n## Examples\n\nFor a complete, working example, refer to the [Bearer example](https://github.com/jaredhanson/passport-http-bearer/tree/master/examples/bearer).\n\n## Related Modules\n\n- [OAuth2orize](https://github.com/jaredhanson/oauth2orize) — OAuth 2.0 authorization server toolkit\n\n## Tests\n\n    $ npm install\n    $ npm test\n\n## Credits\n\n  - [Jared Hanson](http://github.com/jaredhanson)\n\n## License\n\n[The MIT License](http://opensource.org/licenses/MIT)\n\nCopyright (c) 2011-2013 Jared Hanson &#x3c;[http://jaredhanson.net/](http://jaredhanson.net/)&#x3e;\n&#x22;,
+&#x22;readmeFilename&#x22;: &#x22;README.md&#x22;,
+&#x22;repository&#x22;: {
+  &#x22;type&#x22;: &#x22;git&#x22;,
+  &#x22;url&#x22;: &#x22;git://github.com/jaredhanson/passport-http-bearer.git&#x22;
+},
+&#x22;scripts&#x22;: {
+  &#x22;test&#x22;: &#x22;node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js&#x22;
 ...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.passport-http-bearer.super_.prototype.authenticate" id="apidoc.module.passport-http-bearer.super_.prototype.authenticate">module passport-http-bearer.super_.prototype.authenticate</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.passport-http-bearer.super_.prototype.authenticate.authenticate" id="apidoc.element.passport-http-bearer.super_.prototype.authenticate.authenticate">
-        function <span class="apidocSignatureSpan">passport-http-bearer.super_.prototype.</span>authenticate
-        <span class="apidocSignatureSpan">(req, options)</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">authenticate = function (req, options) {
-  throw new Error(&#x27;Strategy#authenticate must be overridden by subclass&#x27;);
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-      return done(null, user, { scope: &#x27;all&#x27; });
-    });
-  }
-));
-
-#### Authenticate Requests
-
-Use `passport.<span class="apidocCodeKeywordSpan">authenticate</span>()`, specifying the `&#x27;bearer&#x27;` strategy, to
-authenticate requests.  Requests containing bearer tokens do not require session
-support, so the `session` option can be set to `false`.
-
-For example, as route middleware in an [Express](http://expressjs.com/)
-application:
-
-app.get(&#x27;/profile&#x27;,
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.passport-http-bearer.toString" id="apidoc.module.passport-http-bearer.toString">module passport-http-bearer.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.passport-http-bearer.toString.toString" id="apidoc.element.passport-http-bearer.toString.toString">
-        function <span class="apidocSignatureSpan">passport-http-bearer.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
 
