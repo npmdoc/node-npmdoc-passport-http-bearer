@@ -1,4 +1,7 @@
-# api documentation for  [passport-http-bearer (v1.0.1)](https://github.com/jaredhanson/passport-http-bearer#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-passport-http-bearer.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-passport-http-bearer) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-passport-http-bearer.svg)](https://travis-ci.org/npmdoc/node-npmdoc-passport-http-bearer)
+# npmdoc-passport-http-bearer
+
+#### basic api documentation for  [passport-http-bearer (v1.0.1)](https://github.com/jaredhanson/passport-http-bearer#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-passport-http-bearer.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-passport-http-bearer) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-passport-http-bearer.svg)](https://travis-ci.org/npmdoc/node-npmdoc-passport-http-bearer)
+
 #### HTTP Bearer authentication strategy for Passport.
 
 [![NPM](https://nodei.co/npm/passport-http-bearer.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/passport-http-bearer)
@@ -87,7 +90,8 @@
             "test/*.test.js"
         ]
     },
-    "version": "1.0.1"
+    "version": "1.0.1",
+    "bin": {}
 }
 ```
 
